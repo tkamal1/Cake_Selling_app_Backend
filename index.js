@@ -8,6 +8,9 @@ import mongoose from "mongoose";
 import ProductRoute from "./Router/Product.js";
 import UserRouter from "./Router/user.js";
 import cookieParser from "cookie-parser";
+import CartItemRoutes from "./Router/CartItems.js";
+import CartCalRoute from "./Router/CartItem.PriceCalculate.js";
+
 dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -31,8 +34,9 @@ app.get("/", (req, res) => {
 // Custom Route
 app.use("/cake/product", ProductRoute);
 // app.use("/cake/future_product");
-// app.use("/cake/cart");
 app.use("/cake/user", UserRouter);
+app.use('/cake/CartItems',CartItemRoutes);
+app.use('/cake/CartPrice',CartCalRoute)
 // app.use("/cake/address");
 
 // server
